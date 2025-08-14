@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: jersey m54;
+    src: url(./assets/font/Jersey\ M54.ttf);
+}
+
+
+@font-face {
+    font-family: coolvetica;
+    src: url(./assets/font/Coolvetica\ Rg.otf);
+}
+
+#cool{
+    font-family: coolvetica;
+}
+
+#jersey{
+    font-family: jersey m54;
+}
+
+.noOutline{
+    text-decoration: none;
+    outline: none;
+}
+
+button{
+    cursor: pointer;
+}

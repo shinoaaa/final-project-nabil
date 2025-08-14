@@ -1,0 +1,44 @@
+.effect1:hover{
+    background-color: #F8F8F8;
+    outline: 1px solid #8A1818 ;
+}
+
+.effect1:hover h1{
+    color: #8A1818;
+}
+
+.effect2:hover{
+    background-color: #8A1818;
+}
+
+.effect2:hover h1{
+    color: #F8F8F8;
+}
+
+.loader {
+  border: 2px solid rgb(6, 6, 6);
+  border-top-color: transparent;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.social-media-zoom{
+    gap: 20px;
+}
+
+.social-media-zoom img {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.social-media-zoom img:hover {
+  transform: scale(1.5);
+}

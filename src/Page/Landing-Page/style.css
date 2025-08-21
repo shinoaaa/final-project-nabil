@@ -1,0 +1,41 @@
+.rotates{
+    transform: rotate(45deg);
+}
+
+.rotates {
+    transform: rotate(45deg);
+}
+
+.slide-container {
+    overflow-x: hidden;
+    width: 90%;
+    position: relative;
+    
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+}
+
+.slide-track {
+    display: flex;
+    animation: scroll 12s linear infinite;
+    width: max-content;
+}
+
+.slide-item {
+    flex: 0 0 auto;
+    margin-right: 50px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

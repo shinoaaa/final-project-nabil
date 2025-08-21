@@ -5,11 +5,12 @@ export const Form = (props) => {
   const { loadingId, handleEmail, handlePassword, login } = props;
   const [emailEmpty, setEmailEmpty] = useState(false);
   const [passEmpty, setPassEmpty] = useState(false);
+  const [socialError, setSocialError] = useState("");
 
   const image = [
-    { url: "./public/Google.svg" },
-    { url: "./public/Discord.svg" },
-    { url: "./public/X.svg" },
+    { url: "./public/Google.svg"},
+    { url: "./public/Discord.svg"},
+    { url: "./public/X.svg"},
   ];
 
   const validateAndLogin = () => {
@@ -24,12 +25,17 @@ export const Form = (props) => {
     }
   };
 
+  const handleSocialClick = (name) => {
+    setSocialError(`This login option is not available yet`);
+    setTimeout(() => setSocialError(""), 4000);
+  };
+
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div className="w-[350px] h-[443px] ">
         <div>
           <h1 id="jersey" className="text-5xl text-[#8A1818] ">
-            Nizza Goccer
+            Gocca Nisser
           </h1>
           <p className="text-[12px] opacity-35 mt-2">
             Whether it’s a casual match or a tournament, book your sports venue
@@ -100,11 +106,20 @@ export const Form = (props) => {
             </div>
             <div className="social-media-zoom w-[150px] h-[20px] flex justify-center items-center gap-7 mt-5">
               {image.map((product, index) => (
-                <div key={index} className="w-[20px] h-[20px]">
+                <div
+                  key={index}
+                  className="w-[20px] h-[20px] cursor-pointer"
+                  onClick={() => handleSocialClick(product.name)}
+                >
                   <img src={product.url} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
+
+
+            {socialError && (
+              <p className="text-red-600 text-[10px] text-center mt-1">{socialError}</p>
+            )}
           </div>
           <Link to={"/register"}>
             <button className="effect2 w-[155px] h-full flex justify-center items-center outline-1 outline-[#8A1818] ">

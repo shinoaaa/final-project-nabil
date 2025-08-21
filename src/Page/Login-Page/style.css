@@ -33,3 +33,12 @@
 .social-media-zoom img:hover {
   transform: scale(1.5);
 }
+
+.change:hover{
+    outline: 1px solid white;
+    background-color: #8A1818;
+}
+
+.change:hover h1{
+    color: white;
+}

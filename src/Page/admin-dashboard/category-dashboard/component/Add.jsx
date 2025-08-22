@@ -27,7 +27,7 @@ export const Add = () => {
 
       setTimeout(() => {
         window.location.reload();
-      }, 2000); // wait 2 seconds before refreshing
+      }, 2000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to create category.");
     }

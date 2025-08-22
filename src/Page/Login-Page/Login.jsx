@@ -19,7 +19,6 @@ const Login = () => {
     setLoadingId(id);
 
     try {
-      // Login -> ambil token
       const res = await axios.post(
         "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/login",
         { email, password },
@@ -33,8 +32,6 @@ const Login = () => {
 
       const token = res.data.data.token;
       localStorage.setItem("accessToken", token);
-
-      // Panggil /me -> ambil role
       const userRes = await axios.get(
         "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/me",
         {
@@ -47,14 +44,15 @@ const Login = () => {
 
       const role = userRes.data.data.role;
       console.log("User role:", role);
-
-      // simpan role saja
       localStorage.setItem("role", role);
 
-      toast.success(`Login Success!`, { autoClose: 2000 });
-
+      toast.success(`Login Success!`, { autoClose: 4000 });
       setTimeout(() => {
-        navigate("/");
+        if (role === "admin") {
+          navigate("/admin-sport");
+        } else {
+          navigate("/");
+        }
       }, 3000);
 
     } catch (error) {

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 export const SportDetail = () => {
   const { id } = useParams();
@@ -91,7 +92,11 @@ export const SportDetail = () => {
   return (
     <div className="p-4 bg-white shadow rounded">
       <ToastContainer position="top-right" autoClose={3000} />
-
+      <Link to={'/activity'}>
+        <button className="px-12 py-1 text-base outline-1 outline-black rounded-full mb-7 mt-5">
+          Back To Activity
+        </button>
+      </Link>
       <h2 className="text-xl font-bold mb-2">{data?.title}</h2>
       <p className="text-gray-600">{data?.description}</p>
 
@@ -148,9 +153,8 @@ export const SportDetail = () => {
               {paymentMethods.map((method) => (
                 <div
                   key={method.id}
-                  className={`flex items-center gap-3 p-2 border rounded cursor-pointer ${
-                    selectedPaymentId === method.id ? "bg-blue-100" : ""
-                  }`}
+                  className={`flex items-center gap-3 p-2 border rounded cursor-pointer ${selectedPaymentId === method.id ? "bg-blue-100" : ""
+                    }`}
                   onClick={() => setSelectedPaymentId(method.id)}
                 >
                   <img src={method.image_url} alt={method.name} className="w-12 h-12" />

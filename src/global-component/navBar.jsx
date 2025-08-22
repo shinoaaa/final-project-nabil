@@ -112,7 +112,14 @@ export const NavBar = () => {
                     <Link to={user?.role === "admin" ? "/admin-sport" : "/profile"}>
                         <li className="flex items-center gap-2 w-20">
                             <div className="w-[15px] h-[15px]">
-                                <img src="./public/profile.svg" alt="" />
+                                <img
+                                    src={
+                                        user?.role === "admin"
+                                            ? "./public/dashbaord.svg"
+                                            : "./public/profile.svg"
+                                    }
+                                    alt=""
+                                />
                             </div>
                             <h1>{user?.role === "admin" ? "Dashboard" : "Profile"}</h1>
                         </li>

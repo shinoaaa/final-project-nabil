@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { MyProduct } from "./component/MyProduct";
+import { ToastContainer } from "react-toastify";
 
 export const ProfilePage = () => {
     const tag = [
@@ -120,9 +122,10 @@ export const ProfilePage = () => {
                         <div className="w-full h-[1px] bg-black mt-7">
 
                         </div>
-                        <div className="lg:w-[854px] xl:w-[1025px] h-3 bg-amber-500">
-
+                        <div className="lg:w-[854px] xl:w-[1025px] mt-12">
+                            <MyProduct/>
                         </div>
+                        <ToastContainer/>
                     </div>
                     <div className="w-[1px] h-auto bg-black"></div> {/* <--- ini garis bjier*/}
                 </div>

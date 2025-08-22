@@ -132,7 +132,9 @@ export const SportAdminDashboard = () => {
                                 <Link to={'/admin-category'}>
                                     <h1 className="opacity-35 hover:opacity-85 hover:text-lg hover:cursor-pointer"> Category </h1>
                                 </Link>
-                                <h1 className="opacity-35 hover:opacity-85 hover:text-lg hover:cursor-pointer">Payment</h1>
+                                <Link to={'/admin-payment'}>
+                                    <h1 className="opacity-35 hover:opacity-85 hover:text-lg hover:cursor-pointer">Payment</h1>
+                                </Link>
                             </div>
                             <FilterSport />
                         </div>

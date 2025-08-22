@@ -54,7 +54,6 @@ export const FilterSport = () => {
     }
   }, [token]);
 
-  // frontend pagination
   const totalPages = Math.ceil(categories.length / itemsPerPage);
   const paginatedData = categories.slice(
     (currentPage - 1) * itemsPerPage,
@@ -122,7 +121,7 @@ export const FilterSport = () => {
   };
 
   return (
-    <div className="lg:w-[854px] xl:w-[1025px] mt-5">
+    <div className="lg:w-[854px] xl:w-[1025px] mt-10">
       {paginatedData.map((cat, index) => (
         <div key={cat.id} className="mb-4">
           <div className="w-full h-[50px] flex text-xl items-center bg-[#FFC800] outline-1 outline-black rounded-full">
@@ -172,7 +171,6 @@ export const FilterSport = () => {
         </div>
       ))}
 
-      {/* Pagination */}
       <div className="flex justify-center mt-12 gap-4 items-center mr-12">
         <button
           disabled={currentPage === 1}

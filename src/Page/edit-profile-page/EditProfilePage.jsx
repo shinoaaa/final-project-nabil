@@ -70,7 +70,7 @@ export const EditProfilePage = () => {
 
         try {
             await axios.post(
-                "https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/update-user/1",
+                `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/update-user/${user.id}`, // pake user.id
                 payload,
                 {
                     headers: {
@@ -95,6 +95,7 @@ export const EditProfilePage = () => {
                 theme: "colored"
             });
         }
+
     };
 
     return (

@@ -24,8 +24,8 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/profile' element={<AntiAdminRoute><ProfilePage/></AntiAdminRoute>}/>
         <Route path='/edit-profile' element={<ProtectedRoute><EditProfilePage/></ProtectedRoute>} />
-        <Route path='/merchant' element={<ProtectedRoute><Merchant/></ProtectedRoute>} />
-        <Route path='/activity' element={<ProtectedRoute><Activity/></ProtectedRoute>} />
+        <Route path='/merchant' element={<Merchant/>}/>
+        <Route path='/activity' element={<Activity/>}/>
         <Route path='/detail/:id' element={<ProtectedRoute><SportDetail/></ProtectedRoute>} />
         <Route path='/admin-sport' element={<AdminRoute><SportAdminDashboard/></AdminRoute>} />
         <Route path='/admin-category' element={<AdminRoute><CategoryAdminDashboard/></AdminRoute>} />

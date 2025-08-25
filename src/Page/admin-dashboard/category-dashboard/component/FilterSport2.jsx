@@ -8,12 +8,14 @@ export const FilterSport = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [editedNames, setEditedNames] = useState({});
+  const [loading, setLoading] = useState(false);
   const itemsPerPage = 6;
 
   const token = localStorage.getItem("accessToken");
 
   useEffect(() => {
     const fetchAllCategories = async () => {
+      setLoading(true);
       let allData = [];
       let page = 1;
 
@@ -22,9 +24,7 @@ export const FilterSport = () => {
           const res = await axios.get(
             `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories?page=${page}&limit=20`,
             {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
+              headers: { Authorization: `Bearer ${token}` },
             }
           );
 
@@ -44,6 +44,8 @@ export const FilterSport = () => {
         console.error("Failed to fetch data:", error);
         toast.error("Failed to load categories.");
         setCategories([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -60,13 +62,9 @@ export const FilterSport = () => {
     currentPage * itemsPerPage
   );
 
-  const toggleOpen = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const handleInputChange = (id, value) => {
+  const toggleOpen = (index) => setOpenIndex(openIndex === index ? null : index);
+  const handleInputChange = (id, value) =>
     setEditedNames((prev) => ({ ...prev, [id]: value }));
-  };
 
   const handleUpdate = async (id) => {
     const newName = editedNames[id];
@@ -79,19 +77,13 @@ export const FilterSport = () => {
       await axios.post(
         `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories/update/${id}`,
         { name: newName },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       toast.success("Category name updated successfully!");
-
       setCategories((prev) =>
         prev.map((cat) => (cat.id === id ? { ...cat, name: newName } : cat))
       );
-
       setOpenIndex(null);
       setEditedNames((prev) => ({ ...prev, [id]: "" }));
     } catch (err) {
@@ -104,11 +96,7 @@ export const FilterSport = () => {
     try {
       await axios.delete(
         `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories/delete/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       toast.success("Category deleted successfully!");
@@ -122,6 +110,12 @@ export const FilterSport = () => {
 
   return (
     <div className="lg:w-[854px] xl:w-[1025px] mt-10">
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       {paginatedData.map((cat, index) => (
         <div key={cat.id} className="mb-4">
           <div className="w-full h-[50px] flex text-xl items-center bg-[#FFC800] outline-1 outline-black rounded-full">
@@ -141,6 +135,7 @@ export const FilterSport = () => {
               <div className="w-[9px] h-[9px] bg-black rounded-full"></div>
             </div>
           </div>
+
           {openIndex === index && (
             <div className="w-full bg-[#DBDBDB] rounded-lg mt-2 outline-1 outline-black flex justify-center">
               <div className="w-[65%]">
@@ -170,36 +165,38 @@ export const FilterSport = () => {
           )}
         </div>
       ))}
+      
+      {!loading && (
+        <div className="flex justify-center mt-12 gap-4 items-center mr-12">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
+          >
+            <img
+              src="./public/arrow-left-circle.svg"
+              className="w-full h-full object-cover filter brightness-0"
+              alt="Previous"
+            />
+          </button>
 
-      <div className="flex justify-center mt-12 gap-4 items-center mr-12">
-        <button
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-          className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
-        >
-          <img
-            src="./public/arrow-left-circle.svg"
-            className="w-full h-full object-cover filter brightness-0"
-            alt="Previous"
-          />
-        </button>
+          <span id="cool" className="text-[#8A1818]">
+            {currentPage} / {totalPages}
+          </span>
 
-        <span id="cool" className="text-[#8A1818]">
-          {currentPage} / {totalPages}
-        </span>
-
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
-        >
-          <img
-            src="./public/arrow-right-circle.svg"
-            className="w-full h-full object-cover filter brightness-0"
-            alt="Next"
-          />
-        </button>
-      </div>
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
+          >
+            <img
+              src="./public/arrow-right-circle.svg"
+              className="w-full h-full object-cover filter brightness-0"
+              alt="Next"
+            />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

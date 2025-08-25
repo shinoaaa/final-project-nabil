@@ -14,7 +14,7 @@ export const CategoryAdminDashboard = () => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localStorage.getItem("accessToken"));
   const [showAdd, setShowAdd] = useState(false);
-  const addRef = useRef(null); // ✅ ref buat Add popup
+  const addRef = useRef(null); 
 
   useEffect(() => {
     const getData = async () => {
@@ -151,7 +151,6 @@ export const CategoryAdminDashboard = () => {
               </div>
 
               <div className="w-full h-10 mt-7 flex items-baseline justify-end">
-                <div className="w-full h-0.5 bg-black"></div>
                 <div
                   className="w-10 h-10 ml-3 hover:cursor-pointer"
                   onClick={() => setShowAdd((prev) => !prev)}

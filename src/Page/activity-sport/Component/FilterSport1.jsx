@@ -11,12 +11,13 @@ export const FilterSport = () => {
   const [selectedProvinceId, setSelectedProvinceId] = useState("");
   const [selectedCityId, setSelectedCityId] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSports = async () => {
+      setLoading(true);
       let allData = [];
       let page = 1;
-
       try {
         while (true) {
           const res = await axios.get(
@@ -31,6 +32,8 @@ export const FilterSport = () => {
         setSports(allData);
       } catch (err) {
         console.error("Error fetching sports:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchSports();
@@ -81,29 +84,23 @@ export const FilterSport = () => {
     const fetchCategories = async () => {
       let allData = [];
       let page = 1;
-
       try {
         while (true) {
           const res = await axios.get(
             `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories?page=${page}&limit=20`
           );
-
           const data = res.data?.result?.data || [];
-          if (!data.length) break; // stop kalau udah abis
-
+          if (!data.length) break;
           allData = [...allData, ...data];
           page++;
         }
-
         setCategories(allData);
       } catch (err) {
         console.error("Error fetching categories:", err);
       }
     };
-
     fetchCategories();
   }, []);
-
 
   const handleConfirm = () => {
     let filtered = [...allSports];
@@ -131,14 +128,15 @@ export const FilterSport = () => {
   return (
     <div className="lg:w-[854px] xl:w-[1025px] mt-9">
       <div className="flex justify-between items-baseline">
-        <h1 id="jersey" className="text-6xl text-[#8A1818]">Book Now</h1>
+        <h1 id="jersey" className="text-6xl text-[#8A1818]">
+          Book Now
+        </h1>
       </div>
-
       <div className="flex mt-3 gap-5">
         <select
+          id="cool"
           className="px-5 h-7 text-sm text-white bg-[#8A1818] rounded-md"
           value={selectedProvinceId}
-          id="cool"
           onChange={(e) => {
             setSelectedProvinceId(e.target.value);
             setSelectedCityId("");
@@ -151,11 +149,10 @@ export const FilterSport = () => {
             </option>
           ))}
         </select>
-
         <select
+          id="cool"
           className="px-5 h-7 text-sm text-white bg-[#8A1818] rounded-md"
           value={selectedCityId}
-          id="cool"
           onChange={(e) => setSelectedCityId(e.target.value)}
           disabled={!cities.length}
         >
@@ -166,11 +163,10 @@ export const FilterSport = () => {
             </option>
           ))}
         </select>
-
         <select
+          id="cool"
           className="px-5 h-7 text-sm text-white bg-[#8A1818] rounded-md"
           value={selectedCategoryId}
-          id="cool"
           onChange={(e) => setSelectedCategoryId(e.target.value)}
         >
           <option value="">Category</option>
@@ -180,7 +176,6 @@ export const FilterSport = () => {
             </option>
           ))}
         </select>
-
         <button
           id="cool"
           className="w-[100px] h-7 ml-3 text-sm flex justify-center text-[#8A1818] bg-[#FFC800] outline outline-[#8A1818] items-center gap-2 rounded-md"
@@ -189,13 +184,18 @@ export const FilterSport = () => {
           Confirm
         </button>
         <button
-          id="cool"
           className="w-7 h-7 text-sm flex justify-center text-white outline-[#8A1818] outline items-center gap-2 rounded-md"
           onClick={handleReset}
         >
           <img src="./public/undo.svg" />
         </button>
       </div>
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       <ActivitySport sports={sports} />
     </div>
   );

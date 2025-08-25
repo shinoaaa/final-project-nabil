@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 export const FilterSport = () => {
   const [transactions, setTransactions] = useState([]);
   const [openIndex, setOpenIndex] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [filterStatus, setFilterStatus] = useState("All");
+  const [loading, setLoading] = useState(false);
   const itemsPerPage = 6;
 
   const token = localStorage.getItem("accessToken");
@@ -16,6 +16,7 @@ export const FilterSport = () => {
     let page = 1;
 
     try {
+      setLoading(true);
       while (true) {
         const res = await axios.get(
           `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/all-transaction?page=${page}&limit=${itemsPerPage}`,
@@ -28,8 +29,8 @@ export const FilterSport = () => {
         const data = Array.isArray(result?.data)
           ? result.data
           : Array.isArray(result?.data?.data)
-          ? result.data.data
-          : [];
+            ? result.data.data
+            : [];
 
         if (!data.length) break;
 
@@ -43,6 +44,8 @@ export const FilterSport = () => {
       console.error("Failed to fetch transactions:", err);
       toast.error("Failed to load transactions.");
       setTransactions([]);
+    } finally {
+      setLoading(false);
     }
   }, [token, itemsPerPage]);
 
@@ -86,9 +89,9 @@ export const FilterSport = () => {
     filterStatus === "All"
       ? transactions
       : transactions.filter(
-          (trx) =>
-            trx.status?.toLowerCase() === filterStatus.toLowerCase()
-        );
+        (trx) =>
+          trx.status?.toLowerCase() === filterStatus.toLowerCase()
+      );
 
   const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
   const currentData = filteredTransactions.slice(
@@ -107,24 +110,25 @@ export const FilterSport = () => {
               setFilterStatus(status);
               setCurrentPage(1);
             }}
-            className={`px-4 py-2 rounded-full border border-gray-400 transition ${
-              filterStatus === status
+            className={`px-4 py-2 rounded-full border border-gray-400 transition ${filterStatus === status
                 ? "bg-[#FFC800] text-black font-semibold"
                 : "bg-white text-gray-600 hover:bg-gray-100"
-            }`}
+              }`}
           >
             {status}
           </button>
         ))}
       </div>
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
       {currentData.map((trx, index) => {
         const userIdNum = Number(trx?.user_id) || 0;
 
         return (
-          <div
-            key={trx.id ?? `${trx.invoice_id}-${index}`}
-            className="mb-4"
-          >
+          <div key={trx.id ?? `${trx.invoice_id}-${index}`} className="mb-4">
             <div className="w-full h-[50px] flex text-xl items-center bg-[#FFC800] outline-1 outline-black rounded-full">
               <div
                 id="cool"
@@ -173,8 +177,7 @@ export const FilterSport = () => {
                         id="cool"
                         className="text-[#8A1818] text-3xl text-center"
                       >
-                        Product:{" "}
-                        {trx?.transaction_items?.sport_activities?.title}
+                        Product: {trx?.transaction_items?.sport_activities?.title}
                       </h1>
                     </div>
                     <div
@@ -197,12 +200,12 @@ export const FilterSport = () => {
                               trx?.payment_method_id === 1
                                 ? "/bca.png"
                                 : trx?.payment_method_id === 2
-                                ? "/bri.png"
-                                : trx?.payment_method_id === 3
-                                ? "/mandiri.png"
-                                : trx?.payment_method_id === 4
-                                ? "/bni.png"
-                                : "/default-payment.png"
+                                  ? "/bri.png"
+                                  : trx?.payment_method_id === 3
+                                    ? "/mandiri.png"
+                                    : trx?.payment_method_id === 4
+                                      ? "/bni.png"
+                                      : "/default-payment.png"
                             }
                             className="w-full h-full object-cover"
                           />
@@ -212,9 +215,7 @@ export const FilterSport = () => {
                   </div>
 
                   <div className="mt-7 mb-3">
-                    <h1 className="mb-2">
-                      Invoice ID: {trx?.invoice_id}
-                    </h1>
+                    <h1 className="mb-2">Invoice ID: {trx?.invoice_id}</h1>
                     <div className="w-full h-[100px] outline-1 outline-black flex items-center justify-center">
                       {trx?.proof_payment_url === null ? (
                         <span className="text-sm text-black">
@@ -226,28 +227,26 @@ export const FilterSport = () => {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <span className="text-white text-sm">
-                          Invalid proof
-                        </span>
+                        <span className="text-white text-sm">Invalid proof</span>
                       )}
                     </div>
 
                     <div className="w-full flex justify-end">
                       <button
                         id="cool"
-                        className={`px-7 py-1 text-xs mt-3 outline-1 outline-black rounded-full ${
-                          trx?.status?.toLowerCase() === "pending"
+                        className={`px-7 py-1 text-xs mt-3 outline-1 outline-black rounded-full ${trx?.status?.toLowerCase() === "pending" && trx?.proof_payment_url
                             ? "bg-[#FFC800] hover:bg-yellow-400"
                             : "bg-gray-400 cursor-not-allowed"
-                        }`}
+                          }`}
                         disabled={
-                          trx?.status?.toLowerCase() !== "pending"
+                          trx?.status?.toLowerCase() !== "pending" || !trx?.proof_payment_url
                         }
                         onClick={() => handleApprovePayment(trx.id)}
                       >
                         Approve Payment
                       </button>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -255,7 +254,6 @@ export const FilterSport = () => {
           </div>
         );
       })}
-      
       {filteredTransactions.length > 0 && (
         <div className="flex justify-center mt-12 gap-4 items-center mr-12">
           <button

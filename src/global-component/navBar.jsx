@@ -36,11 +36,11 @@ export const NavBar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("role");
         setToken(null);
         setUser({});
         setShowConfirm(false);
         setShowDropdown(false);
-
         toast.success("Logout successful", {
             position: "top-right",
             autoClose: 2000,
@@ -55,6 +55,7 @@ export const NavBar = () => {
             navigate("/login");
         }, 3000);
     };
+
 
     return (
         <div className="lg:w-[854px] xl:w-[1025px] h-[66px] relative">

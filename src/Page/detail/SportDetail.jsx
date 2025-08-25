@@ -78,11 +78,11 @@ export const SportDetail = () => {
           },
         }
       );
-      console.log("✅ Transaksi berhasil:", res.data);
-      toast.success("Transaksi berhasil!");
+      console.log("✅ Transaction Success", res.data);
+      toast.success("Transaction Success!");
     } catch (err) {
-      console.error("❌ Gagal transaksi:", err);
-      toast.error("Transaksi gagal. Coba lagi nanti.");
+      console.error("❌ Transaction Failed", err);
+      toast.error("Your transaction is failed, try next.");
     }
   };
 
@@ -90,102 +90,112 @@ export const SportDetail = () => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="p-4 bg-white shadow rounded">
-      <ToastContainer position="top-right" autoClose={3000} />
-      <Link to={'/activity'}>
-        <button className="px-12 py-1 text-base outline-1 outline-black rounded-full mb-7 mt-5">
-          Back To Activity
-        </button>
-      </Link>
-      <h2 className="text-xl font-bold mb-2">{data?.title}</h2>
-      <p className="text-gray-600">{data?.description}</p>
+    <div className="overflow-x-hidden">
+      <div className="w-screen flex flex-col items-center">
+        <div className="lg:w-[928px] xl:w-[1225px] flex justify-between">
+          <div className="w-[1px] h-auto bg-black"></div>
+          <div className="lg:w-[926px] xl:w-[1223px] flex flex-col items-center">
+            <div className="w-full p-4 bg-white shadow rounded">
+              <ToastContainer position="top-right" autoClose={3000} />
+              <Link to={'/activity'}>
+                <button className="px-12 py-1 text-base outline-1 outline-black rounded-full mb-7 mt-5">
+                  Back To Activity
+                </button>
+              </Link>
+              <h2 className="text-xl font-bold mb-2">{data?.title}</h2>
+              <p className="text-gray-600">{data?.description}</p>
 
-      <div className="mt-3">
-        <span className="text-sm font-semibold text-gray-500 mr-1">Kategori:</span>
-        {data?.sport_category?.name}
-      </div>
-
-      <div className="mt-2">
-        <span className="text-sm font-semibold text-gray-500 mr-1">Harga:</span>
-        Rp {data?.price}
-      </div>
-
-      <div className="mt-2">
-        <span className="text-sm font-semibold text-gray-500 mr-1">Alamat:</span>
-        {data?.address}
-      </div>
-
-      <div className="mt-2">
-        <span className="text-sm font-semibold text-gray-500 mr-1">Provinsi:</span>
-        {data?.city?.province?.province_name}
-      </div>
-
-      <div className="mt-2">
-        <span className="text-sm font-semibold text-gray-500 mr-1">Slot:</span>
-        {data?.participants?.length || 0} / {data?.slot}
-      </div>
-
-      <div className="flex gap-3 mt-7">
-        <button
-          className="px-5 py-1 bg-blue-500 text-white rounded-3xl hover:bg-blue-600 transition"
-          onClick={handleConfirm}
-        >
-          Book Now
-        </button>
-
-        {showPayment && (
-          <button
-            className="px-5 py-1 bg-red-500 text-white rounded-3xl hover:bg-red-600 transition"
-            onClick={() => setShowPayment(false)}
-          >
-            Close Payment
-          </button>
-        )}
-      </div>
-
-      {showPayment && (
-        <div className="mt-6 p-4 border rounded bg-gray-50">
-          <h3 className="font-semibold mb-3">Pilih Metode Pembayaran:</h3>
-          {paymentMethods.length === 0 ? (
-            <p className="text-red-500">Tidak ada metode pembayaran tersedia.</p>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {paymentMethods.map((method) => (
-                <div
-                  key={method.id}
-                  className={`flex items-center gap-3 p-2 border rounded cursor-pointer ${selectedPaymentId === method.id ? "bg-blue-100" : ""
-                    }`}
-                  onClick={() => setSelectedPaymentId(method.id)}
-                >
-                  <img src={method.image_url} alt={method.name} className="w-12 h-12" />
-                  <span className="font-medium">{method.name}</span>
-                </div>
-              ))}
-            </div>
-          )}
-          <button
-            className="mt-4 px-4 py-2 bg-green-500 text-white rounded disabled:opacity-50"
-            onClick={handleTransaction}
-            disabled={!selectedPaymentId}
-          >
-            Pay Now
-          </button>
-        </div>
-      )}
-
-      <div className="mt-7">
-        <h3 className="font-semibold text-gray-700 mb-2">Participants:</h3>
-        {data?.participants && data.participants.length > 0 ? (
-          <ul className="flex flex-col gap-2 text-gray-600">
-            {data.participants.map((p, idx) => (
-              <div key={idx} className="inline-block px-5 py-1 outline-1 outline-black">
-                {p?.user?.name} ({p?.user?.email})
+              <div className="mt-3">
+                <span className="text-sm font-semibold text-gray-500 mr-1">Kategori:</span>
+                {data?.sport_category?.name}
               </div>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-400">No participants yet.</p>
-        )}
+
+              <div className="mt-2">
+                <span className="text-sm font-semibold text-gray-500 mr-1">Harga:</span>
+                Rp {data?.price}
+              </div>
+
+              <div className="mt-2">
+                <span className="text-sm font-semibold text-gray-500 mr-1">Alamat:</span>
+                {data?.address}
+              </div>
+
+              <div className="mt-2">
+                <span className="text-sm font-semibold text-gray-500 mr-1">Provinsi:</span>
+                {data?.city?.province?.province_name}
+              </div>
+
+              <div className="mt-2">
+                <span className="text-sm font-semibold text-gray-500 mr-1">Slot:</span>
+                {data?.participants?.length || 0} / {data?.slot}
+              </div>
+
+              <div className="flex gap-3 mt-7">
+                <button
+                  className="px-5 py-1 bg-[#FFC800] text-black rounded-3xl hover:bg-[#d4a600] transition"
+                  onClick={handleConfirm}
+                >
+                  Book Now
+                </button>
+
+                {showPayment && (
+                  <button
+                    className="px-5 py-1 bg-red-500 text-white rounded-3xl hover:bg-red-600 transition"
+                    onClick={() => setShowPayment(false)}
+                  >
+                    Close Payment
+                  </button>
+                )}
+              </div>
+
+              {showPayment && (
+                <div className="mt-6 p-4 border rounded bg-gray-50">
+                  <h3 className="font-semibold mb-3">Pilih Metode Pembayaran:</h3>
+                  {paymentMethods.length === 0 ? (
+                    <p className="text-red-500">Tidak ada metode pembayaran tersedia.</p>
+                  ) : (
+                    <div className="flex flex-col gap-3">
+                      {paymentMethods.map((method) => (
+                        <div
+                          key={method.id}
+                          className={`flex items-center gap-3 p-2 border rounded cursor-pointer ${selectedPaymentId === method.id ? "bg-blue-100" : ""
+                            }`}
+                          onClick={() => setSelectedPaymentId(method.id)}
+                        >
+                          <img src={method.image_url} alt={method.name} className="w-12 h-12" />
+                          <span className="font-medium">{method.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <button
+                    className="mt-4 px-4 py-2 bg-green-500 text-white rounded disabled:opacity-50"
+                    onClick={handleTransaction}
+                    disabled={!selectedPaymentId}
+                  >
+                    Pay Now
+                  </button>
+                </div>
+              )}
+
+              <div className="mt-7">
+                <h3 className="font-semibold text-gray-700 mb-2">Participants:</h3>
+                {data?.participants && data.participants.length > 0 ? (
+                  <ul className="flex flex-col gap-2 text-gray-600">
+                    {data.participants.map((p, idx) => (
+                      <div key={idx} className="inline-block px-5 py-1 outline-1 outline-black">
+                        {p?.user?.name} ({p?.user?.email})
+                      </div>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-400">No participants yet.</p>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-[1px] h-auto bg-black"></div>
+        </div>
       </div>
     </div>
   );

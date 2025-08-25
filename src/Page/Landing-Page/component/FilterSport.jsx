@@ -12,9 +12,11 @@ export const FilterSport = () => {
   const [selectedProvinceId, setSelectedProvinceId] = useState("");
   const [selectedCityId, setSelectedCityId] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [loading, setLoading] = useState(false); // state loading
 
   useEffect(() => {
     const fetchSports = async () => {
+      setLoading(true);
       let allData = [];
       let page = 1;
 
@@ -35,36 +37,34 @@ export const FilterSport = () => {
         setSports(allData);
       } catch (err) {
         console.error("Error fetching sports:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchSports();
   }, []);
 
+  // fetching provinces, cities, categories tetap sama
   useEffect(() => {
     const fetchProvinces = async () => {
       let allData = [];
       let page = 1;
-
       try {
         while (true) {
           const res = await axios.get(
             `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/location/provinces?page=${page}&limit=20`
           );
-
           const data = res.data?.result?.data?.data || res.data?.result?.data || [];
           if (!data.length) break;
-
           allData = [...allData, ...data];
           page++;
         }
-
         setProvinces(allData);
       } catch (err) {
         console.error("Error fetching provinces:", err);
       }
     };
-
     fetchProvinces();
   }, []);
 
@@ -73,20 +73,17 @@ export const FilterSport = () => {
       setCities([]);
       return;
     }
-
     const fetchCities = async () => {
       try {
         const res = await axios.get(
           `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/location/cities/${selectedProvinceId}`
         );
-
         const data = res.data?.result?.data?.data || res.data?.result?.data || [];
         setCities(data);
       } catch (err) {
         console.error("Error fetching cities:", err);
       }
     };
-
     fetchCities();
   }, [selectedProvinceId]);
 
@@ -94,45 +91,36 @@ export const FilterSport = () => {
     const fetchCategories = async () => {
       let allData = [];
       let page = 1;
-
       try {
         while (true) {
           const res = await axios.get(
             `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories?page=${page}&limit=20`
           );
-
           const data = res.data?.result?.data || [];
-          if (!data.length) break; // stop kalau udah abis
-
+          if (!data.length) break;
           allData = [...allData, ...data];
           page++;
         }
-
         setCategories(allData);
       } catch (err) {
         console.error("Error fetching categories:", err);
       }
     };
-
     fetchCategories();
   }, []);
 
-
   const handleConfirm = () => {
     let filtered = [...allSports];
-
     if (selectedCityId) {
       filtered = filtered.filter(
         (sport) => String(sport.city_id) === String(selectedCityId)
       );
     }
-
     if (selectedCategoryId) {
       filtered = filtered.filter(
         (sport) => String(sport.sport_category_id) === String(selectedCategoryId)
       );
     }
-
     setSports(filtered);
   };
 
@@ -154,7 +142,6 @@ export const FilterSport = () => {
       </div>
 
       <div className="flex mt-3 gap-5">
-
         <select
           id="cool"
           className="px-5 h-7 text-sm text-white bg-[#8A1818] rounded-md"
@@ -213,6 +200,13 @@ export const FilterSport = () => {
           <img src="./public/undo.svg" />
         </button>
       </div>
+
+      {/* Spinner di bawah filter */}
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
 
       <ActivitySport sports={sports} />
     </div>

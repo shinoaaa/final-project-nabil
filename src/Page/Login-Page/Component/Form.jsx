@@ -8,9 +8,9 @@ export const Form = (props) => {
   const [socialError, setSocialError] = useState("");
 
   const image = [
-    { url: "./public/Google.svg"},
-    { url: "./public/Discord.svg"},
-    { url: "./public/X.svg"},
+    { url: "./public/Google.svg" },
+    { url: "./public/Discord.svg" },
+    { url: "./public/X.svg" },
   ];
 
   const validateAndLogin = () => {
@@ -34,9 +34,11 @@ export const Form = (props) => {
     <div className="w-full h-full flex justify-center items-center">
       <div className="w-[350px] h-[443px] ">
         <div>
-          <h1 id="jersey" className="text-5xl text-[#8A1818] ">
-            Gocca Nisser
-          </h1>
+          <Link to={'/'}>
+            <h1 id="jersey" className="text-5xl text-[#8A1818] ">
+              Gocca Nisser
+            </h1>
+          </Link>
           <p className="text-[12px] opacity-35 mt-2">
             Whether it’s a casual match or a tournament, book your sports venue
             in minutes and enjoy a hassle-free experience.
@@ -51,9 +53,8 @@ export const Form = (props) => {
             placeholder="Email"
           />
           <div
-            className={`w-full h-[1px] ${
-              emailEmpty ? "bg-red-500" : "bg-black opacity-65"
-            }`}
+            className={`w-full h-[1px] ${emailEmpty ? "bg-red-500" : "bg-black opacity-65"
+              }`}
           ></div>
           {emailEmpty && (
             <div className="flex items-center gap-2 mt-1">
@@ -70,9 +71,8 @@ export const Form = (props) => {
             placeholder="Password"
           />
           <div
-            className={`w-full h-[1px] ${
-              passEmpty ? "bg-red-500" : "bg-black opacity-65"
-            }`}
+            className={`w-full h-[1px] ${passEmpty ? "bg-red-500" : "bg-black opacity-65"
+              }`}
           ></div>
           {passEmpty && (
             <div className="flex items-center gap-2 mt-1">

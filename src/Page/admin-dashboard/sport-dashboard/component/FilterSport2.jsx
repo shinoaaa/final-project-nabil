@@ -14,11 +14,13 @@ export const FilterSport = () => {
   const [selectedCityId, setSelectedCityId] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
+  const [loading, setLoading] = useState(false); // 🔹 loading state
   const [showAdd, setShowAdd] = useState(false);
   const addRef = useRef(null);
 
   useEffect(() => {
     const fetchSports = async () => {
+      setLoading(true);
       let allData = [];
       let page = 1;
 
@@ -36,6 +38,8 @@ export const FilterSport = () => {
         setSports(allData);
       } catch (err) {
         console.error("Error fetching sports:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchSports();
@@ -92,14 +96,11 @@ export const FilterSport = () => {
           const res = await axios.get(
             `https://sport-reservation-api-bootcamp.do.dibimbing.id/api/v1/sport-categories?page=${page}&limit=20`
           );
-
           const data = res.data?.result?.data || [];
-          if (!data.length) break; // stop kalau udah abis
-
+          if (!data.length) break;
           allData = [...allData, ...data];
           page++;
         }
-
         setCategories(allData);
       } catch (err) {
         console.error("Error fetching categories:", err);
@@ -108,7 +109,6 @@ export const FilterSport = () => {
 
     fetchCategories();
   }, []);
-
 
   const handleConfirm = () => {
     let filtered = [...allSports];
@@ -133,19 +133,14 @@ export const FilterSport = () => {
     setCities([]);
   };
 
-  // Close Add saat klik di luar
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (addRef.current && !addRef.current.contains(e.target)) {
         setShowAdd(false);
       }
     };
-    if (showAdd) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    if (showAdd) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showAdd]);
 
   return (
@@ -221,8 +216,18 @@ export const FilterSport = () => {
         </div>
       </div>
 
+      {/* 🔹 Spinner di bawah filter */}
+      {loading && (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+        </div>
+      )}
+
       {showAdd && (
-        <div className="absolute -translate-x-5 -translate-y-5 z-50 rounded-2xl " ref={addRef}>
+        <div
+          className="absolute -translate-x-5 -translate-y-5 z-50 rounded-2xl "
+          ref={addRef}
+        >
           <Add />
         </div>
       )}

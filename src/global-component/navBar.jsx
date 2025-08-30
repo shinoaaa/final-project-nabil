@@ -92,7 +92,7 @@ export const NavBar = () => {
                                     ? "/default.png"
                                     : user.name.length % 2 === 0
                                         ? "public/Kaoruko.jpg"
-                                        : "public/yuzuha.jpg"
+                                        : "public/Yuzuha.jpg"
                             }
                             className="w-full h-full object-cover rounded-full"
                         />

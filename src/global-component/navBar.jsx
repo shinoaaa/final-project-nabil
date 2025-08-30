@@ -91,8 +91,8 @@ export const NavBar = () => {
                                 !user.name || user.name.length === 0
                                     ? "/default.png"
                                     : user.name.length % 2 === 0
-                                        ? "public/Kaoruko.jpg"
-                                        : "public/Yuzuha.jpg"
+                                        ? "/Kaoruko.jpg"
+                                        : "/Yuzuha.jpg"
                             }
                             className="w-full h-full object-cover rounded-full"
                         />
@@ -129,7 +129,7 @@ export const NavBar = () => {
                         <Link to={"/login"}>
                             <li className="flex items-center gap-2 hover:cursor-pointer w-20">
                                 <div className="w-[15px] h-[15px]">
-                                    <img src="public/login.svg" alt="" />
+                                    <img src="/Login.svg" alt="" />
                                 </div>
                                 <h1>Login</h1>
                             </li>
@@ -142,7 +142,7 @@ export const NavBar = () => {
                             onClick={() => setShowConfirm(true)}
                         >
                             <div className="w-[15px] h-[15px]">
-                                <img src="public/logout.svg" alt="" />
+                                <img src="/Logout.svg" alt="" />
                             </div>
                             <h1>Logout</h1>
                         </li>

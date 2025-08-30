@@ -77,13 +77,13 @@ export const ActivitySport = ({ sports = [] }) => {
                   <h1>Contact</h1>
                   <ul className="flex gap-2 mb-1">
                     <li className="w-[10px] h-[10px]">
-                      <img src="/facebooks.svg" />
+                      <img src="/Facebooks.svg" />
                     </li>
                     <li className="w-[10px] h-[10px]">
-                      <img src="/tiktoks.svg" />
+                      <img src="/Tiktoks.svg" />
                     </li>
                     <li className="w-[10px] h-[10px]">
-                      <img src="/x.svg" />
+                      <img src="/X.svg" />
                     </li>
                   </ul>
                 </div>

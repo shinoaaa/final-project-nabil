@@ -197,11 +197,11 @@ export const FilterSport = () => {
           className="w-7 h-7 text-sm hover:text-base flex justify-center text-white outline-[#8A1818] outline-1 items-center gap-2 rounded-md"
           onClick={handleReset}
         >
-          <img src="./public/undo.svg" />
+          <img src="/undo.svg" />
         </button>
       </div>
 
-      
+
       {loading && (
         <div className="spinner-container">
           <div className="spinner"></div>

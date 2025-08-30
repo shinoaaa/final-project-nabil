@@ -12,7 +12,7 @@ export const Merchant = () => {
                         <div className="w-full h-full flex justify-center items-center">
                             <div className="w-full flex flex-col items-center">
                                 <div className="w-30 h-30">
-                                    <img src="./public/notfound.png" className="w-full h-full object-cover" />
+                                    <img src="/notfound.png" className="w-full h-full object-cover" />
                                 </div>
                                 <h1>
                                     Sorry this page is not yet available

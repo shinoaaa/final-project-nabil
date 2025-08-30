@@ -15,7 +15,7 @@ export const Activity = () => {
                         </div>
                         <div className="w-full h-[1px] bg-black"></div> {/* <--- ini garis bjier*/}
                         <div className="w-full h-75">
-                            <img src="./public/golf-image.svg" className="w-full h-full object-cover" />
+                            <img src="/golf-image.svg" className="w-full h-full object-cover" />
                         </div>
                         <div className="w-full h-[1px] bg-black"></div> {/* <--- ini garis bjier*/}
                         <div className="w-full flex flex-col items-center bg-[#FFC800]">

@@ -4,24 +4,24 @@ export const HeroSection = () => {
             role: "user",
             name: "Fulanochi",
             email: "Fulanochi@gmail.com",
-            rating: "./public/empat.png",
-            image:"./public/luna.jpg",
+            rating: "/empat.png",
+            image:"/luna.jpg",
             review: "Sudah tiga kali saya pakai layanan ini untuk basket dan voli. Jadwalnya jelas, proses booking cepat, dan sistem pembayarannya aman. Paling enak itu kita bisa lihat langsung ketersediaan lapangan tanpa harus tanya-tanya lagi. Kalau bisa sih ditambah fitur pilihan tipe lantai atau fasilitas pendukung biar lebih mantap, tapi secara keseluruhan ini udah jauh lebih praktis dibanding cara lama."
         },
         {
             role: "Sports Venue Owner ",
             name: "Fulono",
             email: "Fulono@gmail.com",
-            image:"./public/numberOne.jpg",
-            rating: "./public/empat.png",
+            image:"/numberOne.jpg",
+            rating: "/empat.png",
             review: "Sejak bergabung dengan platform ini, jumlah penyewa lapangan meningkat signifikan, terutama di jam-jam yang biasanya sepi. Proses manajemen jadwal jadi jauh lebih rapi dan hemat waktu karena semua terintegrasi. Saya tidak perlu repot angkat telepon berkali-kali untuk konfirmasi booking. Selain itu, promosi dari platform ini membantu GOR kami dikenal lebih banyak orang. Layanan ini jelas menguntungkan, baik untuk pemilik maupun pemain."
         },
         {
             role: "User",
             name: "Fulanoo",
             email: "Fulanoo@gmail.com",
-            image:"./public/BillyButcher.jpg",
-            rating: "./public/empatkurang.png",
+            image:"/BillyButcher.jpg",
+            rating: "/empatkurang.png",
             review: "Aku pancen seneng olahraga, luwih-luwih futsal karo kanca-kanca. Sakdurunge ngerti layanan iki, aku kerep bingung golek lapangan sing kosong, kudu telpon siji-siji lan asring kebacut penuh. Saiki, mung butuh sawetara menit wae wis iso pesen lapangan, jadwale cetha lan pembayarané gampang. Pancen marem tenan, rausah ruwet-ruwet maneh, tinggal main wae!"
         }
     ]

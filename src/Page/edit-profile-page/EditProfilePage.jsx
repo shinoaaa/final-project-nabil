@@ -109,10 +109,10 @@ export const EditProfilePage = () => {
                             <img
                                 src={
                                     !user.name || user.name.length === 0
-                                        ? "./public/default-banner.jpg"
+                                        ? "/default-banner.jpg"
                                         : user.name.length % 2 === 0
-                                            ? "./public/banner.jpg"
-                                            : "./public/banner2.jpeg"
+                                            ? "/banner.jpg"
+                                            : "/banner2.jpeg"
                                 }
                                 className="w-full h-full object-cover"
                             />
@@ -124,10 +124,10 @@ export const EditProfilePage = () => {
                                         <img
                                             src={
                                                 !user.name || user.name.length === 0
-                                                    ? "./public/default.png"
+                                                    ? "/default.png"
                                                     : user.name.length % 2 === 0
-                                                        ? "./public/Kaoruko.jpg"
-                                                        : "./public/yuzuha.jpg"
+                                                        ? "/Kaoruko.jpg"
+                                                        : "/yuzuha.jpg"
                                             }
                                             className="w-full h-full object-cover"
                                         />

@@ -89,16 +89,16 @@ export const NavBar = () => {
                         <img
                             src={
                                 !user.name || user.name.length === 0
-                                    ? "./public/default.png"
+                                    ? "/default.png"
                                     : user.name.length % 2 === 0
-                                        ? "./public/Kaoruko.jpg"
-                                        : "./public/yuzuha.jpg"
+                                        ? "/Kaoruko.jpg"
+                                        : "/yuzuha.jpg"
                             }
                             className="w-full h-full object-cover rounded-full"
                         />
                     </div>
                     <img
-                        src="./public/arrow-down.svg"
+                        src="/arrow-down.svg"
                         className="cursor-pointer hover:opacity-45"
                         onClick={() => setShowDropdown(!showDropdown)}
                     />
@@ -116,8 +116,8 @@ export const NavBar = () => {
                                 <img
                                     src={
                                         user?.role === "admin"
-                                            ? "./public/dashbaord.svg"
-                                            : "./public/profile.svg"
+                                            ? "/dashbaord.svg"
+                                            : "/profile.svg"
                                     }
                                     alt=""
                                 />
@@ -129,7 +129,7 @@ export const NavBar = () => {
                         <Link to={"/login"}>
                             <li className="flex items-center gap-2 hover:cursor-pointer w-20">
                                 <div className="w-[15px] h-[15px]">
-                                    <img src="./public/login.svg" alt="" />
+                                    <img src="/login.svg" alt="" />
                                 </div>
                                 <h1>Login</h1>
                             </li>
@@ -142,7 +142,7 @@ export const NavBar = () => {
                             onClick={() => setShowConfirm(true)}
                         >
                             <div className="w-[15px] h-[15px]">
-                                <img src="./public/logout.svg" alt="" />
+                                <img src="/logout.svg" alt="" />
                             </div>
                             <h1>Logout</h1>
                         </li>

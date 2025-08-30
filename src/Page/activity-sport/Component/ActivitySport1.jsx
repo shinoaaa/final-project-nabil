@@ -26,7 +26,7 @@ export const ActivitySport = ({ sports = [] }) => {
             className="w-[275px] h-[200px] bg-[#8A1818] outline outline-[#8A1818] relative"
           >
             <div className="w-[275px] h-[75px]">
-              <img src="./public/sport.jpg" className="w-full h-full object-cover" />
+              <img src="/sport.jpg" className="w-full h-full object-cover" />
             </div>
             <div className="w-[50px] h-[50px] bg-[#8A1818] outline-1 outline-black rounded-md absolute -translate-y-[25px] right-0 mr-5 flex justify-center items-center">
               <h1 id="cool" className="text-[8px] text-white text-center">
@@ -46,7 +46,7 @@ export const ActivitySport = ({ sports = [] }) => {
                 <h1 className="text-[9px] text-[#FFC800]">Rp{activity.price}</h1>
                 <div className="flex h-[15px] items-center mt-1">
                   <div className="w-[15px] h-[15px]">
-                    <img src="./public/buildings.svg" className="w-full h-full object-cover" />
+                    <img src="/buildings.svg" className="w-full h-full object-cover" />
                   </div>
                   <h1 className="text-[8px] w-33 text-white ml-2 truncate">
                     Address: {activity.address}
@@ -77,13 +77,13 @@ export const ActivitySport = ({ sports = [] }) => {
                   <h1>Contact</h1>
                   <ul className="flex gap-2 mb-1">
                     <li className="w-[10px] h-[10px]">
-                      <img src="./public/facebooks.svg" />
+                      <img src="/facebooks.svg" />
                     </li>
                     <li className="w-[10px] h-[10px]">
-                      <img src="./public/tiktoks.svg" />
+                      <img src="/tiktoks.svg" />
                     </li>
                     <li className="w-[10px] h-[10px]">
-                      <img src="./public/x.svg" />
+                      <img src="/x.svg" />
                     </li>
                   </ul>
                 </div>
@@ -98,7 +98,7 @@ export const ActivitySport = ({ sports = [] }) => {
           onClick={() => setCurrentPage((prev) => prev - 1)}
           className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
         >
-          <img src="./public/arrow-left-circle.svg" className="w-full h-full object-cover" />
+          <img src="/arrow-left-circle.svg" className="w-full h-full object-cover" />
         </button>
         <span id="cool" className="text-[#8A1818]">
           {currentPage} / {totalPages}
@@ -108,7 +108,7 @@ export const ActivitySport = ({ sports = [] }) => {
           onClick={() => setCurrentPage((prev) => prev + 1)}
           className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
         >
-          <img src="./public/arrow-right-circle.svg" className="w-full h-full object-cover" />
+          <img src="/arrow-right-circle.svg" className="w-full h-full object-cover" />
         </button>
       </div>
     </div>

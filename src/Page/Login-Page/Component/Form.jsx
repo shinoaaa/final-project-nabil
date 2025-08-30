@@ -8,9 +8,9 @@ export const Form = (props) => {
   const [socialError, setSocialError] = useState("");
 
   const image = [
-    { url: "./public/Google.svg" },
-    { url: "./public/Discord.svg" },
-    { url: "./public/X.svg" },
+    { url: "/Google.svg" },
+    { url: "/Discord.svg" },
+    { url: "/X.svg" },
   ];
 
   const validateAndLogin = () => {

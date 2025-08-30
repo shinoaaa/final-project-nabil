@@ -262,7 +262,7 @@ export const FilterSport = () => {
             className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
           >
             <img
-              src="./public/arrow-left-circle.svg"
+              src="/arrow-left-circle.svg"
               className="w-full h-full object-cover filter brightness-0"
             />
           </button>
@@ -275,7 +275,7 @@ export const FilterSport = () => {
             className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
           >
             <img
-              src="./public/arrow-right-circle.svg"
+              src="/arrow-right-circle.svg"
               className="w-full h-full object-cover filter brightness-0"
             />
           </button>

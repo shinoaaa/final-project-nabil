@@ -205,14 +205,14 @@ export const FilterSport = () => {
             className="w-7 h-7 text-sm flex justify-center text-white outline-[#8A1818] outline items-center gap-2 rounded-md filter brightness-0"
             onClick={handleReset}
           >
-            <img src="./public/undo.svg" />
+            <img src="/undo.svg" />
           </button>
         </div>
         <div
           className="w-9 h-9 flex justify-center items-center hover:cursor-pointer"
           onClick={() => setShowAdd(true)}
         >
-          <img src="./public/add.svg" alt="" />
+          <img src="/add.svg" alt="" />
         </div>
       </div>
 

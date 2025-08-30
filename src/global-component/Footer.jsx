@@ -1,10 +1,10 @@
 export const Footer = () => {
     const socialMedia = [
-        {image:"./public/linkedin.svg"},
-        {image:"./public/tiktok.svg"},
-        {image:"./public/whatsapp.svg"},
-        {image:"./public/facebook.svg"},
-        {image:"./public/xs.svg"},
+        {image:"/linkedin.svg"},
+        {image:"/tiktok.svg"},
+        {image:"/whatsapp.svg"},
+        {image:"/facebook.svg"},
+        {image:"/xs.svg"},
     ]
 
     return (
@@ -25,7 +25,7 @@ export const Footer = () => {
                         </p>
                         <div className="mt-5 flex">
                             <div className="w-[19px] h-[8px] mr-1">
-                                <img src="./public/telephone.png" alt="" />
+                                <img src="/telephone.png" alt="" />
                             </div>
                             <div className="w-[142px] text-[12px] opacity-50">
                                 +0628798-81122-32218

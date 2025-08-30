@@ -43,9 +43,9 @@ export const Form = ({ loadingId, onRegister }) => {
   };
 
   const image = [
-    { url: "./public/Google.svg" },
-    { url: "./public/Discord.svg" },
-    { url: "./public/X.svg" },
+    { url: "/Google.svg" },
+    { url: "/Discord.svg" },
+    { url: "/X.svg" },
   ];
 
   return (

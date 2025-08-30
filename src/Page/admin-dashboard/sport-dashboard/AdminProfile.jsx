@@ -46,10 +46,10 @@ export const SportAdminDashboard = () => {
                         <div className="w-full h-[145px] outline-1 outline-black">
                             <img src={
                                 !user.name || user.name.length === 0
-                                    ? "./public/default-banner.jpg"
+                                    ? "/default-banner.jpg"
                                     : user.name.length % 2 === 0
-                                        ? "./public/banner.jpg"
-                                        : "./public/banner2.jpeg"
+                                        ? "/banner.jpg"
+                                        : "/banner2.jpeg"
                             } className="w-full h-full object-cover" />
                         </div>
                         <div className="lg:w-[854px] xl:w-[1025px]">
@@ -58,10 +58,10 @@ export const SportAdminDashboard = () => {
                                     <div className="w-[200px] h-[200px] bg-amber-700 outline-7 outline-[#E7E7E7] absolute -translate-y-9">
                                         <img src={
                                             !user.name || user.name.length === 0
-                                                ? "./public/default.png"
+                                                ? "/default.png"
                                                 : user.name.length % 2 === 0
-                                                    ? "./public/Kaoruko.jpg"
-                                                    : "./public/yuzuha.jpg"
+                                                    ? "/Kaoruko.jpg"
+                                                    : "/yuzuha.jpg"
                                         } className="w-full h-full object-cover" />
                                     </div>
                                 </div>

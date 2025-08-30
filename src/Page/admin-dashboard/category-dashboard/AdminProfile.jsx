@@ -65,10 +65,10 @@ export const CategoryAdminDashboard = () => {
               <img
                 src={
                   !user.name || user.name.length === 0
-                    ? "./public/default-banner.jpg"
+                    ? "/default-banner.jpg"
                     : user.name.length % 2 === 0
-                      ? "./public/banner.jpg"
-                      : "./public/banner2.jpeg"
+                      ? "/banner.jpg"
+                      : "/banner2.jpeg"
                 }
                 className="w-full h-full object-cover"
               />
@@ -81,10 +81,10 @@ export const CategoryAdminDashboard = () => {
                     <img
                       src={
                         !user.name || user.name.length === 0
-                          ? "./public/default.png"
+                          ? "/default.png"
                           : user.name.length % 2 === 0
-                            ? "./public/Kaoruko.jpg"
-                            : "./public/yuzuha.jpg"
+                            ? "/Kaoruko.jpg"
+                            : "/yuzuha.jpg"
                       }
                       className="w-full h-full object-cover"
                     />
@@ -155,7 +155,7 @@ export const CategoryAdminDashboard = () => {
                   className="w-10 h-10 ml-3 hover:cursor-pointer"
                   onClick={() => setShowAdd((prev) => !prev)}
                 >
-                  <img src="./public/add.svg" className="w-full h-full object-cover" alt="Add" />
+                  <img src="/add.svg" className="w-full h-full object-cover" alt="Add" />
                 </div>
               </div>
 

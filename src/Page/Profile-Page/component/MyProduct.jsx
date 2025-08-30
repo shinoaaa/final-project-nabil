@@ -104,7 +104,7 @@ export const MyProduct = () => {
         {currentData.map((trx, index) => {
           const sport = trx?.transaction_items?.sport_activities;
           const title = trx?.transaction_items?.title ?? sport?.title ?? "Sport Title";
-          const imageUrl = sport?.image_url ?? "./public/sport.jpg";
+          const imageUrl = sport?.image_url ?? "/sport.jpg";
           const address = sport?.address ?? "-";
           const status = trx?.status ?? "-";
           const totalAmount =
@@ -131,7 +131,7 @@ export const MyProduct = () => {
 
                   <div className="flex h-[15px] items-center mt-1">
                     <div className="w-[15px] h-[15px]">
-                      <img src="./public/buildings.svg" className="w-full h-full object-cover" />
+                      <img src="/buildings.svg" className="w-full h-full object-cover" />
                     </div>
                     <h1 className="text-[8px] w-33 text-white ml-2 truncate">Address: {address}</h1>
                   </div>
@@ -180,7 +180,7 @@ export const MyProduct = () => {
             onClick={() => setCurrentPage((prev) => prev - 1)}
             className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
           >
-            <img src="./public/arrow-left-circle.svg" className="w-full h-full object-cover" />
+            <img src="/arrow-left-circle.svg" className="w-full h-full object-cover" />
           </button>
           <span id="cool" className="text-[#8A1818]">{currentPage} / {totalPages}</span>
           <button
@@ -188,7 +188,7 @@ export const MyProduct = () => {
             onClick={() => setCurrentPage((prev) => prev + 1)}
             className="w-10 h-10 text-white rounded disabled:text-[#BFBFBF] disabled:opacity-50"
           >
-            <img src="./public/arrow-right-circle.svg" className="w-full h-full object-cover" />
+            <img src="/arrow-right-circle.svg" className="w-full h-full object-cover" />
           </button>
         </div>
       )}

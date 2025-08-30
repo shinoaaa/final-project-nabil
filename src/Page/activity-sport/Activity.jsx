@@ -10,7 +10,9 @@ export const Activity = () => {
                 <div className="lg:w-[928px] xl:w-[1225px] flex justify-between">
                     <div className="w-[1px] h-auto bg-black"></div> {/* <--- ini garis bjier*/}
                     <div className="lg:w-[926px] xl:w-[1233px] flex flex-col items-center">
+                        <div className="z-20">
                         <NavBar />
+                        </div>
                         <div className="w-full h-[1px] bg-black"></div> {/* <--- ini garis bjier*/}
                         <div className="w-full h-75">
                             <img src="./public/golf-image.svg" className="w-full h-full object-cover" />

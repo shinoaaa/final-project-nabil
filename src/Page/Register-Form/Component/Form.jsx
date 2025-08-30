@@ -36,7 +36,7 @@ export const Form = ({ loadingId, onRegister }) => {
   };
 
   const handleSocialClick = () => {
-    setSocialError("This login option is not available yet");
+    setSocialError("This register option is not available yet");
     setTimeout(() => {
       setSocialError("");
     }, 2000);

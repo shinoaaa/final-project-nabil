@@ -23,7 +23,7 @@ export const MerchantList = () => {
         {
             name: "Yanglex Astrox 100 ZZ",
             brand: "Yonex",
-            background: "/badminton-image.png",
+            background: "/Badminton-image.png",
             image: "/badminton-brand.png",
             user: "200+",
             price: "80000",

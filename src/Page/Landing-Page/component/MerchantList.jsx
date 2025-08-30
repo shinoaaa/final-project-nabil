@@ -24,7 +24,7 @@ export const MerchantList = () => {
             name: "Yanglex Astrox 100 ZZ",
             brand: "Yonex",
             background: "/Badminton-image.png",
-            image: "/badmintn-brand.png",
+            image: "/badminton-brand.png",
             user: "200+",
             price: "80000",
             desc: "High-performance badminton racket offering explosive smashes and precise control, perfect for players aiming to dominate rallies with speed and accuracy."

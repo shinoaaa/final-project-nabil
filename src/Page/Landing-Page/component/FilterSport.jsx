@@ -12,7 +12,7 @@ export const FilterSport = () => {
   const [selectedProvinceId, setSelectedProvinceId] = useState("");
   const [selectedCityId, setSelectedCityId] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
-  const [loading, setLoading] = useState(false); // state loading
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchSports = async () => {
@@ -45,7 +45,7 @@ export const FilterSport = () => {
     fetchSports();
   }, []);
 
-  // fetching provinces, cities, categories tetap sama
+
   useEffect(() => {
     const fetchProvinces = async () => {
       let allData = [];
@@ -201,7 +201,7 @@ export const FilterSport = () => {
         </button>
       </div>
 
-      {/* Spinner di bawah filter */}
+      
       {loading && (
         <div className="spinner-container">
           <div className="spinner"></div>

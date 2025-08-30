@@ -1,14 +1,14 @@
 export const SportList = () => {
     const sport = [
-        { url: "./public/Archery.png" },
-        { url: "./public/Badminton.png" },
-        { url: "./public/BaseBall.png" },
-        { url: "./public/Billiar.png" },
-        { url: "./public/Bowling.png" },
-        { url: "./public/Golf.png" },
-        { url: "./public/PingPong.png" },
-        { url: "./public/Running.png" },
-        { url: "./public/Football.png" },
+        { url: "/Archery.png" },
+        { url: "/Badminton.png" },
+        { url: "/BaseBall.png" },
+        { url: "/Billiar.png" },
+        { url: "/Bowling.png" },
+        { url: "/Golf.png" },
+        { url: "/PingPong.png" },
+        { url: "/Running.png" },
+        { url: "/Football.png" },
     ]
 
 

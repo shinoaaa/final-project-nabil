@@ -85,7 +85,7 @@ export const PaymentAdminDashboard = () => {
                           ? "/default.png"
                           : user.name.length % 2 === 0
                           ? "/Kaoruko.jpg"
-                          : "/yuzuha.jpg"
+                          : "/Yuzuha.jpg"
                       }
                       className="w-full h-full object-cover"
                     />

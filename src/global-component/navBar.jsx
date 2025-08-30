@@ -129,7 +129,7 @@ export const NavBar = () => {
                         <Link to={"/login"}>
                             <li className="flex items-center gap-2 hover:cursor-pointer w-20">
                                 <div className="w-[15px] h-[15px]">
-                                    <img src="/login.svg" alt="" />
+                                    <img src="public/login.svg" alt="" />
                                 </div>
                                 <h1>Login</h1>
                             </li>
@@ -142,7 +142,7 @@ export const NavBar = () => {
                             onClick={() => setShowConfirm(true)}
                         >
                             <div className="w-[15px] h-[15px]">
-                                <img src="/logout.svg" alt="" />
+                                <img src="public/logout.svg" alt="" />
                             </div>
                             <h1>Logout</h1>
                         </li>
